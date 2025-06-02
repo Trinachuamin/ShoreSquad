@@ -158,6 +158,22 @@ async function loadCommunityActivities() {
 
 // Event Listeners
 function setupEventListeners() {
+    // Navbar scroll effect
+    let lastScroll = 0;
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        lastScroll = currentScroll;
+    });
+
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -177,20 +193,14 @@ function setupEventListeners() {
     });
 }
 
-// Intersection Observer for animations
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-        }
-    });
-}, {
-    threshold: 0.1
-});
-
-// Observe all sections for scroll animations
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
+// Simple scroll handler for navbar
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
 });
 
 // Helper function to map weather conditions to Font Awesome icons
