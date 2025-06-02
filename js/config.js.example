@@ -1,0 +1,11 @@
+// Configuration file template
+// Copy this file to config.js and replace the placeholder values with your actual API keys
+const config = {
+    GOOGLE_MAPS_API_KEY: "YOUR_GOOGLE_MAPS_API_KEY_HERE",
+    NEA_API_ENDPOINTS: {
+        WEATHER_FORECAST: 'https://api.data.gov.sg/v1/environment/4-day-weather-forecast',
+        REALTIME_WEATHER: 'https://api.data.gov.sg/v1/environment/air-temperature',
+        RAINFALL: 'https://api.data.gov.sg/v1/environment/rainfall',
+        RELATIVE_HUMIDITY: 'https://api.data.gov.sg/v1/environment/relative-humidity'
+    }
+};

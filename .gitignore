@@ -17,10 +17,18 @@ Thumbs.db
 *.swp
 *.swo
 
-# Environment variables
+# Environment variables and secrets
 .env
 .env.local
 .env.*.local
+api-keys.json
+secrets.json
+js/config.js  # Contains API keys
+js/config.js
+
+# Sensitive information
+**/config.js
+**/api-keys.json
 
 # Log files
 npm-debug.log*

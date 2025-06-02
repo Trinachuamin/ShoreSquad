@@ -141,6 +141,15 @@ h1, h2, h3, h4 {
     background-color: var(--white);
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
 }
 
 /* Weather Section */
@@ -151,9 +160,104 @@ h1, h2, h3, h4 {
 
 .weather-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
     gap: 2rem;
     margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .weather-cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.weather-card {
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.weather-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.weather-card.current-weather {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--white);
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+}
+
+.current-weather h3 {
+    color: var(--white);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.weather-icon {
+    font-size: 3rem;
+    color: var(--white);
+    margin: 1rem 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+.weather-card:not(.current-weather) .weather-icon {
+    color: var(--primary);
+    font-size: 2.5rem;
+}
+
+.temperature {
+    font-size: 2rem;
+    font-weight: bold;
+    color: inherit;
+    margin: 0.5rem 0;
+}
+
+.weather-card:not(.current-weather) .temperature {
+    color: var(--dark);
+    font-size: 1.5rem;
+}
+
+.condition {
+    font-weight: 500;
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.weather-card:not(.current-weather) .condition {
+    color: var(--primary);
+}
+
+.humidity, .wind, .rainfall {
+    font-size: 0.95rem;
+    margin: 0.3rem 0;
+    opacity: 0.9;
+}
+
+.weather-card:not(.current-weather) .humidity,
+.weather-card:not(.current-weather) .wind {
+    color: var(--dark);
+}
+
+.error {
+    color: #ff4444;
+    text-align: center;
+    padding: 2rem;
+    font-weight: 500;
+    grid-column: 1 / -1;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
 
 /* Community Section */
